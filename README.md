@@ -1,4 +1,11 @@
-# MyApp
+# Angular agGrid integration test app
+
+Features:
+- Fetch data from Youtube search result.
+- Display video thumbnails, titles, descriptions and navigation link to the movie.
+- Ability to open video in new tab.
+- Ability to select/deselect rows in the grid.
+- Tool panel with 'Selection' mode toggle button, rows count and selected rows count.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.24.
 
