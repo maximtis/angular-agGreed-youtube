@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "angular-aggreed-youtube",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,6 +11,9 @@
   },
   "private": true,
   "dependencies": {
+    "@ag-grid-community/all-modules": "^22.1.1",
+    "@ag-grid-enterprise/all-modules": "^22.1.2",
+    "@ag-grid-enterprise/clipboard": "^22.1.1",
     "@angular/animations": "~8.2.14",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
@@ -21,6 +24,7 @@
     "@angular/router": "~8.2.14",
     "ag-grid-angular": "^22.1.1",
     "ag-grid-community": "^22.1.1",
+    "ag-grid-enterprise": "^22.1.1",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
