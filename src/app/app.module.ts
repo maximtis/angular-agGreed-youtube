@@ -5,11 +5,6 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchResultComponent } from './search-result/search-result.component';
 import { YoutubeApiService } from '../services/youtube-api.service';
-import { CustomStatsToolPanel } from './common/ag-grid-components/toolbar/toolbar.component';
-import { ThumbnailRenderer } from './common/ag-grid-components/renderers/thumbnail-renderer';
-import { LinkRenderer } from './common/ag-grid-components/renderers/link-renderer';
-import { CheckRenderer } from './common/ag-grid-components/renderers/check-renderer';
-import { CheckBoxHeader } from './common/ag-grid-components/headers/checkbox-header';
 import { GridColumnsDefinitionService } from '../services/columns-definitions.service';
 import { SearchResultModule } from './search-result/search-result.module';
 

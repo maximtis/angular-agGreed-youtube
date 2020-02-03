@@ -1,5 +1,5 @@
-import { Component, ViewChild, ViewContainerRef } from "@angular/core";
-import { IToolPanel, IToolPanelParams, GridApi } from "@ag-grid-community/all-modules";
+import { Component } from "@angular/core";
+import { IToolPanel, IToolPanelParams } from "@ag-grid-community/all-modules";
 import { GridColumnsDefinitionService } from '../../../../services/columns-definitions.service';
 
 @Component({

@@ -1,12 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchResultComponent } from './search-result.component';
-import { ThumbnailRenderer } from '../common/ag-grid-components/renderers/thumbnail-renderer';
-import { AgGridModule } from 'ag-grid-angular';
-import { LinkRenderer } from '../common/ag-grid-components/renderers/link-renderer';
-import { CheckRenderer } from '../common/ag-grid-components/renderers/check-renderer';
-import { CheckBoxHeader } from '../common/ag-grid-components/headers/checkbox-header';
-import { GridColumnsDefinitionService } from '../../services/columns-definitions.service';
+import { AgGridModule } from 'ag-grid-angular';import { GridColumnsDefinitionService } from '../../services/columns-definitions.service';
 import { YoutubeApiService } from '../../services/youtube-api.service';
 import { LinkRendererModule } from '../common/ag-grid-components/renderers/link-renderer.module';
 import { CheckRendererModule } from '../common/ag-grid-components/renderers/check-renderer.module';
