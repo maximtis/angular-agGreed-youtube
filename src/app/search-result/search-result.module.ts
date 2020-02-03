@@ -9,9 +9,11 @@ import { CustomStatsToolPanelModule } from '../common/ag-grid-components/toolbar
 import { CheckRendererModule } from '../common/ag-grid-components/renderers/check-renderer.module';
 import { ThumbnailRendererModule } from '../common/ag-grid-components/renderers/thumbnail-renderer.module';
 import { CheckBoxHeaderModule } from '../common/ag-grid-components/headers/checkbox-header.module';
+import { CommonModule, DatePipe } from '@angular/common';
 
 @NgModule({
   imports: [
+    CommonModule,
     CustomStatsToolPanelModule,
     LinkRendererModule,
     CheckRendererModule,
@@ -20,7 +22,7 @@ import { CheckBoxHeaderModule } from '../common/ag-grid-components/headers/check
     AgGridModule.withComponents([]),],
   declarations: [SearchResultComponent],
   exports: [SearchResultComponent],
-  providers: [GridColumnsDefinitionService, YoutubeApiService],
+  providers: [GridColumnsDefinitionService, YoutubeApiService, DatePipe],
 })
 
 export class SearchResultModule {

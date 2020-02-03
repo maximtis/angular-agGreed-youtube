@@ -17,6 +17,7 @@ import { GridColumnsDefinitionService } from '../../services/columns-definitions
 import { SearchResponseModel } from '../../models/youtube-api/search/search-response.model';
 import { SearchResultItemModel } from '../../models/search-result-item/search-item-title.model';
 import { SearchResultItemTitleModel } from '../../models/search-result-item/search-item.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-search-result',
@@ -26,7 +27,7 @@ import { SearchResultItemTitleModel } from '../../models/search-result-item/sear
 
 export class SearchResultComponent implements OnInit {
 
-  constructor(private _youtubeApiService: YoutubeApiService, private _gridColumnsDefinitionService: GridColumnsDefinitionService) { }
+  constructor(private _youtubeApiService: YoutubeApiService, private _gridColumnsDefinitionService: GridColumnsDefinitionService, private datePipe: DatePipe) { }
 
   async ngOnInit() { await this.getGoogleYoutubeData(); }
 
@@ -34,7 +35,12 @@ export class SearchResultComponent implements OnInit {
   rowData: Array<SearchResultItemModel>;
   columnDefs = [
     { headerName: 'Selection', colId: "selection", hide: true, cellRenderer: "checkRenderer", headerComponent: "checkBoxHeader", width: 50 },
-    { headerName: 'PublishedAt', field: 'publishedAt', width: 150 },
+    {
+      headerName: 'PublishedAt', field: 'publishedAt', width: 150,
+      valueFormatter: (date) => {
+        return this.datePipe.transform(date.value, 'yyyy-MM-dd');
+      }
+    },
     { headerName: 'Video Title', field: 'title', width: 350, cellRenderer: "linkRenderer" },
     { headerName: 'Description', field: 'description', width: 450 },
     { headerName: '', field: 'thumbnail', width: 250, cellRenderer: "thumbnailRenderer" }

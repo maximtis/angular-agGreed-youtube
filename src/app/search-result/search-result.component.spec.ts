@@ -14,6 +14,7 @@ import { ThumbnailRendererModule } from '../common/ag-grid-components/renderers/
 import { CheckBoxHeaderModule } from '../common/ag-grid-components/headers/checkbox-header.module';
 import { CustomStatsToolPanelModule } from '../common/ag-grid-components/toolbar/toolbar.module';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { CommonModule, DatePipe } from '@angular/common';
 
 
 describe('SearchResultComponent', () => {
@@ -24,6 +25,7 @@ describe('SearchResultComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CustomStatsToolPanelModule,
+        CommonModule,
         LinkRendererModule,
         CheckRendererModule,
         ThumbnailRendererModule,
@@ -31,7 +33,7 @@ describe('SearchResultComponent', () => {
         HttpClientTestingModule,
         AgGridModule.withComponents([]),],
       declarations: [SearchResultComponent],
-      providers: [GridColumnsDefinitionService, YoutubeApiService],
+      providers: [GridColumnsDefinitionService, YoutubeApiService, DatePipe],
     })
     .compileComponents();
   }));
