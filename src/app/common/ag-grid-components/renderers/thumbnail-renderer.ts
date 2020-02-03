@@ -7,6 +7,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
   template: `<img [src]="imgSrc" alt="thumbnail-default">`
 })
 export class ThumbnailRenderer implements ICellRendererAngularComp {
+  constructor() {}
   private params: ICellRendererParams;
   private imgSrc: string;
 

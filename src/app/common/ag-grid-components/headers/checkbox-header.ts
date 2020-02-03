@@ -13,8 +13,6 @@ export class CheckBoxHeader {
   }
 
   checkValue(event: any) {
-    //TODO: notify state
-    debugger;
     if (this.isChecked) {
       this.params.api.forEachNode(function (rowNode) {
         rowNode.selectThisNode(false);

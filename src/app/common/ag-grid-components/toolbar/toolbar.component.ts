@@ -26,15 +26,12 @@ export class CustomStatsToolPanel implements IToolPanel {
 
   constructor(private _gridColumnsDefinitionService: GridColumnsDefinitionService) { }
 
-    refresh(): void {
-        throw new Error("Method not implemented.");
-    }
+    refresh(): void {}
   private params: IToolPanelParams;
 
   public totalRecordsCount: number;
   private selectedRowsCount: number;
   private selectionModeOn: boolean;
-  private api: GridApi;
 
   agInit(params: IToolPanelParams): void {
     this.params = params;
@@ -42,18 +39,22 @@ export class CustomStatsToolPanel implements IToolPanel {
     this.selectedRowsCount = 0;
     this.selectionModeOn = false;
 
-    // calculate stats when new rows loaded, i.e. onModelUpdated
+    this.params.api.addEventListener('rowSelected', this.updateTotals.bind(this));
     this.params.api.addEventListener('modelUpdated', this.updateTotals.bind(this));
   }
 
   updateTotals(): void {
     var totalRecordsNumber = 0;
+    var selectedRowsNumber = 0;
 
     this.params.api.forEachNode(function (rowNode) {
       totalRecordsNumber++;
-      let data = rowNode.data;  
+      if (rowNode.isSelected()) {
+        selectedRowsNumber++
+      }
     });
 
+    this.selectedRowsCount = selectedRowsNumber;
     this.totalRecordsCount = totalRecordsNumber;
   }
 

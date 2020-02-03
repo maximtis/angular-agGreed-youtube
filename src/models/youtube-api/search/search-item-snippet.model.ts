@@ -1,4 +1,6 @@
-interface SearchItemSnippetModel {
+import { SnippetThumbnailsModel } from './snippet-thumbnails.model';
+
+export interface SearchItemSnippetModel {
   publishedAt: string;
   channelId: string;
   title: string;

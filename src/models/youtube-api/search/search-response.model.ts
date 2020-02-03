@@ -1,4 +1,7 @@
-interface SearchResponseModel {
+import { SearchItemModel } from './search-item.model';
+import { SearchResponsePageInfoModel } from './search-response-page-info.model';
+
+export interface SearchResponseModel {
   kind: string;
   etag: string;
   nextPageToken: string;

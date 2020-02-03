@@ -14,7 +14,9 @@ import { LinkRenderer } from '../common/ag-grid-components/renderers/link-render
 import { CheckRenderer } from '../common/ag-grid-components/renderers/check-renderer';
 import { CheckBoxHeader } from '../common/ag-grid-components/headers/checkbox-header';
 import { GridColumnsDefinitionService } from '../../services/columns-definitions.service';
-import { debug } from 'util';
+import { SearchResponseModel } from '../../models/youtube-api/search/search-response.model';
+import { SearchResultItemModel } from '../../models/search-result-item/search-item-title.model';
+import { SearchResultItemTitleModel } from '../../models/search-result-item/search-item.model';
 
 @Component({
   selector: 'app-search-result',
@@ -30,8 +32,6 @@ export class SearchResultComponent implements OnInit {
 
   youTubeApiResponse: SearchResponseModel;
   rowData: Array<SearchResultItemModel>;
-  title = 'app';
-
   columnDefs = [
     { headerName: 'Selection', colId: "selection", hide: true, cellRenderer: "checkRenderer", headerComponent: "checkBoxHeader", width: 50 },
     { headerName: 'PublishedAt', field: 'publishedAt', width: 150 },
@@ -39,11 +39,9 @@ export class SearchResultComponent implements OnInit {
     { headerName: 'Description', field: 'description', width: 450 },
     { headerName: '', field: 'thumbnail', width: 250, cellRenderer: "thumbnailRenderer" }
   ];
- 
+
   modules:any[] = AllModules;
-
   icons = { "custom-stats": '<span class="ag-icon ag-icon-custom-stats"></span>' };
-
   frameworkComponents = {
     customStatsToolPanel: CustomStatsToolPanel,
     thumbnailRenderer: ThumbnailRenderer,
@@ -66,7 +64,7 @@ export class SearchResultComponent implements OnInit {
   }
 
   getContextMenuItems(params: GetContextMenuItemsParams) {
-    var defaultContextMenu: Array<any> = [
+    let defaultContextMenu: Array<any> = [
       "copy",
       "copyWithHeaders",
       "paste"
@@ -84,7 +82,6 @@ export class SearchResultComponent implements OnInit {
   }
 
   onGridReady(params) {
-    debugger;
     this._gridColumnsDefinitionService.setColumnApi(params.columnApi);
   }
 

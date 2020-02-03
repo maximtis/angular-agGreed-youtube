@@ -11,21 +11,16 @@ import { LinkRenderer } from './common/ag-grid-components/renderers/link-rendere
 import { CheckRenderer } from './common/ag-grid-components/renderers/check-renderer';
 import { CheckBoxHeader } from './common/ag-grid-components/headers/checkbox-header';
 import { GridColumnsDefinitionService } from '../services/columns-definitions.service';
+import { SearchResultModule } from './search-result/search-result.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    SearchResultComponent,
-    CustomStatsToolPanel,
-    ThumbnailRenderer,
-    LinkRenderer,
-    CheckRenderer,
-    CheckBoxHeader
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AgGridModule.withComponents([CustomStatsToolPanel, ThumbnailRenderer, LinkRenderer, CheckRenderer, CheckBoxHeader]),
-    HttpClientModule
+    HttpClientModule,
+    SearchResultModule
   ],
   providers: [YoutubeApiService, GridColumnsDefinitionService],
   bootstrap: [AppComponent]
