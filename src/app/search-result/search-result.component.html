@@ -9,5 +9,6 @@
                  [icons]="icons"
                  [sideBar]="sideBar"
                  [allowContextMenuWithControlKey]="true"
-                 [getContextMenuItems]="getContextMenuItems">
+                 [getContextMenuItems]="getContextMenuItems"
+                 (gridReady)="onGridReady($event)">
 </ag-grid-angular>

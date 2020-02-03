@@ -1,5 +1,6 @@
 import { Component, ViewChild, ViewContainerRef } from "@angular/core";
 import { IToolPanel, IToolPanelParams, GridApi } from "@ag-grid-community/all-modules";
+import { GridColumnsDefinitionService } from '../../../../services/columns-definitions.service';
 
 @Component({
   selector: 'custom-stats',
@@ -22,6 +23,9 @@ import { IToolPanel, IToolPanelParams, GridApi } from "@ag-grid-community/all-mo
   ]
 })
 export class CustomStatsToolPanel implements IToolPanel {
+
+  constructor(private _gridColumnsDefinitionService: GridColumnsDefinitionService) { }
+
     refresh(): void {
         throw new Error("Method not implemented.");
     }
@@ -47,12 +51,21 @@ export class CustomStatsToolPanel implements IToolPanel {
 
     this.params.api.forEachNode(function (rowNode) {
       totalRecordsNumber++;
-      let data = rowNode.data;
+      let data = rowNode.data;  
     });
 
     this.totalRecordsCount = totalRecordsNumber;
   }
 
   toggleSelectionMode() {
+    if (this.selectionModeOn) {
+      this.params.api.forEachNode(function (rowNode) {
+        rowNode.selectThisNode(false);
+      });
+    }
+    this.selectionModeOn = !this.selectionModeOn;
+
+    this._gridColumnsDefinitionService.getColumnApi().setColumnVisible("selection", this.selectionModeOn);
+
   }
 }

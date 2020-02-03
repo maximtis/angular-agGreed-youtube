@@ -8,6 +8,9 @@ import { YoutubeApiService } from '../services/youtube-api.service';
 import { CustomStatsToolPanel } from './common/ag-grid-components/toolbar/toolbar.component';
 import { ThumbnailRenderer } from './common/ag-grid-components/renderers/thumbnail-renderer';
 import { LinkRenderer } from './common/ag-grid-components/renderers/link-renderer';
+import { CheckRenderer } from './common/ag-grid-components/renderers/check-renderer';
+import { CheckBoxHeader } from './common/ag-grid-components/headers/checkbox-header';
+import { GridColumnsDefinitionService } from '../services/columns-definitions.service';
 
 @NgModule({
   declarations: [
@@ -15,14 +18,16 @@ import { LinkRenderer } from './common/ag-grid-components/renderers/link-rendere
     SearchResultComponent,
     CustomStatsToolPanel,
     ThumbnailRenderer,
-    LinkRenderer
+    LinkRenderer,
+    CheckRenderer,
+    CheckBoxHeader
   ],
   imports: [
     BrowserModule,
-    AgGridModule.withComponents([CustomStatsToolPanel, ThumbnailRenderer, LinkRenderer]),
+    AgGridModule.withComponents([CustomStatsToolPanel, ThumbnailRenderer, LinkRenderer, CheckRenderer, CheckBoxHeader]),
     HttpClientModule
   ],
-  providers: [YoutubeApiService],
+  providers: [YoutubeApiService, GridColumnsDefinitionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

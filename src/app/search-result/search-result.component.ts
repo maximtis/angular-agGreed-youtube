@@ -11,6 +11,10 @@ import "@ag-grid-community/all-modules/dist/styles/ag-theme-balham.css";
 import { GetContextMenuItemsParams } from 'ag-grid-community';
 import { ThumbnailRenderer } from '../common/ag-grid-components/renderers/thumbnail-renderer';
 import { LinkRenderer } from '../common/ag-grid-components/renderers/link-renderer';
+import { CheckRenderer } from '../common/ag-grid-components/renderers/check-renderer';
+import { CheckBoxHeader } from '../common/ag-grid-components/headers/checkbox-header';
+import { GridColumnsDefinitionService } from '../../services/columns-definitions.service';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-search-result',
@@ -20,7 +24,7 @@ import { LinkRenderer } from '../common/ag-grid-components/renderers/link-render
 
 export class SearchResultComponent implements OnInit {
 
-  constructor(private _youtubeApiService: YoutubeApiService) { }
+  constructor(private _youtubeApiService: YoutubeApiService, private _gridColumnsDefinitionService: GridColumnsDefinitionService) { }
 
   async ngOnInit() { await this.getGoogleYoutubeData(); }
 
@@ -29,6 +33,7 @@ export class SearchResultComponent implements OnInit {
   title = 'app';
 
   columnDefs = [
+    { headerName: 'Selection', colId: "selection", hide: true, cellRenderer: "checkRenderer", headerComponent: "checkBoxHeader", width: 50 },
     { headerName: 'PublishedAt', field: 'publishedAt', width: 150 },
     { headerName: 'Video Title', field: 'title', width: 350, cellRenderer: "linkRenderer" },
     { headerName: 'Description', field: 'description', width: 450 },
@@ -42,7 +47,9 @@ export class SearchResultComponent implements OnInit {
   frameworkComponents = {
     customStatsToolPanel: CustomStatsToolPanel,
     thumbnailRenderer: ThumbnailRenderer,
-    linkRenderer: LinkRenderer
+    linkRenderer: LinkRenderer,
+    checkRenderer: CheckRenderer,
+    checkBoxHeader: CheckBoxHeader
   };
 
   sideBar = {
@@ -69,12 +76,18 @@ export class SearchResultComponent implements OnInit {
       defaultContextMenu.push({
         name: "Open in new tab",
         action: function () {
-          window.open('https://www.youtube.com/watch?v=H9bGITkIHmM', "_blank");
+          window.open(params.value.link, "_blank");
         }
       });
     }
     return defaultContextMenu;
   }
+
+  onGridReady(params) {
+    debugger;
+    this._gridColumnsDefinitionService.setColumnApi(params.columnApi);
+  }
+
 
   async getGoogleYoutubeData() {
     this.youTubeApiResponse = await this._youtubeApiService.getData().toPromise();
